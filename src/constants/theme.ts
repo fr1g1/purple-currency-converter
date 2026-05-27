@@ -8,11 +8,18 @@ import '@/global.css';
 import { Platform } from 'react-native';
 
 export const Colors = {
-    text: '#000000',
     background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
+    text: '#000000',
+    mutedText: '#60646C',
+    primary: '#522473',
+    onPrimary: '#FFFFFF',
+    danger: '#D92D20',
+    light: '#ffffff',
+    dark: '#000000',
     textSecondary: '#60646C',
+    error: '#D92D20',
+    purple: '#522473',
+    onPurple: '#FFFFFF',
 } as const;
 
 export type Color = keyof typeof Colors;
