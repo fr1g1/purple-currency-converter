@@ -18,10 +18,20 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         padding: Spacing.three,
         gap: Spacing.three,
+        shadowColor: Colors.dark,
+        shadowOpacity: 0.18,
+        shadowRadius: 8,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        elevation: 4,
     },
     transparentCard: {
         backgroundColor: 'transparent',
         borderWidth: 1,
-        borderColor: Colors.text,
+        borderColor: Colors.mutedText,
+        shadowOpacity: 0,
+        elevation: 0,
     },
 });

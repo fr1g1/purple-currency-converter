@@ -14,16 +14,16 @@ type StatisticsCardProps = {
 export function StatisticsCard({ result, calculationCount }: StatisticsCardProps) {
     return (
         <Card variant='transparent'>
-            <Field label='Result' labelColor='text'>
-                <Text color='text' type='smallBold'>
+            <Field label='Result' labelColor='mutedText'>
+                <Text color='text' type='title'>
                     {result !== null ? `${result}` : '-'}
                 </Text>
             </Field>
 
             <View style={styles.separator} />
 
-            <Field label='Number of calculations' labelColor='text'>
-                <Text color='text' type='smallBold'>
+            <Field label='Number of calculations' labelColor='mutedText'>
+                <Text color='text' type='title'>
                     {calculationCount}
                 </Text>
             </Field>
@@ -34,6 +34,6 @@ export function StatisticsCard({ result, calculationCount }: StatisticsCardProps
 const styles = StyleSheet.create({
     separator: {
         borderTopWidth: 1,
-        borderTopColor: Colors.text,
+        borderTopColor: Colors.mutedText,
     },
 });

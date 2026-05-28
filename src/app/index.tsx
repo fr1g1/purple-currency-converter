@@ -14,12 +14,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '@/components/card';
 import { Field } from '@/components/field';
 import { Picker } from '@/components/picker';
+import { StatisticsCard } from '@/components/statistics-card';
 import { Text } from '@/components/text';
 import { Colors, Spacing } from '@/constants/theme';
 import { useCalculationCount } from '@/hooks/use-calculation-count';
-import { useCurrencies } from '@/queries/currencies';
-import { StatisticsCard } from '@/components/statistics-card';
 import { useConvertCurrency } from '@/queries/conversion';
+import { useCurrencies } from '@/queries/currencies';
 
 export default function HomeScreen() {
     const [amount, setAmount] = useState('');
@@ -246,6 +246,14 @@ const styles = StyleSheet.create({
         paddingVertical: Spacing.three,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowColor: Colors.dark,
+        shadowOpacity: 0.18,
+        shadowRadius: 8,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        elevation: 4,
     },
     convertButtonDisabled: {
         opacity: 0.7,
