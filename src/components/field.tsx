@@ -2,7 +2,9 @@ import { PropsWithChildren } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Text, type TextProps } from '@/components/text';
-import { Colors, Spacing } from '@/constants/theme';
+import { Spacing } from '@/constants/theme';
+
+import { ErrorMessage } from './error-message';
 
 
 type FieldProps = PropsWithChildren<{
@@ -18,11 +20,7 @@ export function Field({ label, errorMessage, labelColor = 'onPrimary', children 
                 {label}
             </Text>
             {children}
-            {errorMessage ? (
-                <Text type='smallBold' style={styles.errorMessage}>
-                    {errorMessage}
-                </Text>
-            ) : null}
+            <ErrorMessage message={errorMessage} />
         </View>
     );
 }
@@ -33,8 +31,5 @@ const styles = StyleSheet.create({
     },
     label: {
         lineHeight: 18,
-    },
-    errorMessage: {
-        color: Colors.danger,
     },
 });

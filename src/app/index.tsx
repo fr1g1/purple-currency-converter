@@ -12,6 +12,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Card } from '@/components/card';
+import { ErrorMessage } from '@/components/error-message';
 import { Field } from '@/components/field';
 import { Picker } from '@/components/picker';
 import { StatisticsCard } from '@/components/statistics-card';
@@ -161,23 +162,9 @@ export default function HomeScreen() {
                             disabled={isInteractionDisabled}
                         />
 
-                        {currenciesErrorMessage ? (
-                            <Text color='danger' type='smallBold'>
-                                {currenciesErrorMessage}
-                            </Text>
-                        ) : null}
-
-                        {conversionValidationError ? (
-                            <Text color='danger' type='smallBold'>
-                                {conversionValidationError}
-                            </Text>
-                        ) : null}
-
-                        {convertErrorMessage ? (
-                            <Text color='danger' type='smallBold'>
-                                {convertErrorMessage}
-                            </Text>
-                        ) : null}
+                        <ErrorMessage message={currenciesErrorMessage} />
+                        <ErrorMessage message={conversionValidationError} />
+                        <ErrorMessage message={convertErrorMessage} />
                     </Card>
 
                     <Pressable
