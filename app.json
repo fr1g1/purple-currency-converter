@@ -8,6 +8,7 @@
     "scheme": "purplecurrencyconverter",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.yourname.purplecurrencyconverter",
       "icon": "./assets/expo.icon"
     },
     "android": {
@@ -17,6 +18,7 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "package": "com.yourname.purplecurrencyconverter",
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -39,6 +41,19 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "626d684c-fe1e-4fff-b66b-28c963395ef0"
+      }
+    },
+    "owner": "frigi",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/626d684c-fe1e-4fff-b66b-28c963395ef0"
     }
   }
 }
