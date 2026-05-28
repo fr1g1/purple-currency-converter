@@ -16,6 +16,7 @@ import { Field } from '@/components/field';
 import { Picker } from '@/components/picker';
 import { Text } from '@/components/text';
 import { Colors, Spacing } from '@/constants/theme';
+import { useCalculationCount } from '@/hooks/use-calculation-count';
 import { useCurrencies } from '@/queries/currencies';
 import { StatisticsCard } from '@/components/statistics-card';
 import { useConvertCurrency } from '@/queries/conversion';
@@ -30,6 +31,11 @@ export default function HomeScreen() {
     const isRestoring = useIsRestoring();
     const currenciesQuery = useCurrencies();
     const convertMutation = useConvertCurrency();
+    const {
+        calculationCount,
+        isCalculationCountLoaded,
+        incrementCalculationCount,
+    } = useCalculationCount();
 
     const resetConversionState = () => {
         setConversionValidationError(undefined);
@@ -61,10 +67,11 @@ export default function HomeScreen() {
     const parsedAmount = Number(amount);
     const isAmountValid = amount.trim().length > 0 && Number.isFinite(parsedAmount);
     const isCurrenciesLoading = isRestoring || currenciesQuery.isPending;
-    const isDataReady = !isRestoring && currenciesQuery.isSuccess;
+    const isDataReady = !isRestoring && currenciesQuery.isSuccess && isCalculationCountLoaded;
     const isInteractionDisabled = !isDataReady;
     const currenciesErrorMessage = currenciesQuery.isError ? 'Unable to load currencies' : undefined;
     const isConvertLoading = convertMutation.isPending;
+    const isStorageLoading = !isCalculationCountLoaded;
     const convertErrorMessage = convertMutation.isError
         ? convertMutation.error.message
         : undefined;
@@ -98,6 +105,7 @@ export default function HomeScreen() {
             {
                 onSuccess: async (result: number) => {
                     setConversionResult(result);
+                    await incrementCalculationCount();
                 },
             }
         );
@@ -180,7 +188,7 @@ export default function HomeScreen() {
                             (isInteractionDisabled || isConvertLoading) && styles.convertButtonDisabled,
                         ]}
                     >
-                        {isCurrenciesLoading ? (
+                        {isCurrenciesLoading || isStorageLoading ? (
                             <View style={styles.buttonContent}>
                                 <ActivityIndicator color={Colors.onPrimary} size='small' />
                                 <Text color='onPrimary' type='smallBold'>
