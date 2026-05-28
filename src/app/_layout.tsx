@@ -1,9 +1,13 @@
-import { DarkTheme, DefaultTheme, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
+
+import { QueryProvider } from '@/providers/query-provider';
 
 export default function Layout() {
     return (
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-        </Stack>
+        <QueryProvider>
+            <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+            </Stack>
+        </QueryProvider>
     );
 }
