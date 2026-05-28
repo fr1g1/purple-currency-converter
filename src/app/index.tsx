@@ -1,10 +1,8 @@
 import { useIsRestoring } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import {
-    ActivityIndicator,
     Keyboard,
     KeyboardAvoidingView,
-    Pressable,
     StyleSheet,
     TextInput,
     View,
@@ -12,6 +10,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Card } from '@/components/card';
+import { ConvertButton } from '@/components/convert-button';
 import { ErrorMessage } from '@/components/error-message';
 import { Field } from '@/components/field';
 import { Picker } from '@/components/picker';
@@ -167,34 +166,13 @@ export default function HomeScreen() {
                         <ErrorMessage message={convertErrorMessage} />
                     </Card>
 
-                    <Pressable
+                    <ConvertButton
                         disabled={isInteractionDisabled || isConvertLoading}
+                        isCurrenciesLoading={isCurrenciesLoading}
+                        isStorageLoading={isStorageLoading}
+                        isConvertLoading={isConvertLoading}
                         onPress={handleConvertPress}
-                        style={[
-                            styles.convertButton,
-                            (isInteractionDisabled || isConvertLoading) && styles.convertButtonDisabled,
-                        ]}
-                    >
-                        {isCurrenciesLoading || isStorageLoading ? (
-                            <View style={styles.buttonContent}>
-                                <ActivityIndicator color={Colors.onPrimary} size='small' />
-                                <Text color='onPrimary' type='smallBold'>
-                                    Loading data
-                                </Text>
-                            </View>
-                        ) : isConvertLoading ? (
-                            <View style={styles.buttonContent}>
-                                <ActivityIndicator color={Colors.onPrimary} size='small' />
-                                <Text color='onPrimary' type='smallBold'>
-                                    Converting
-                                </Text>
-                            </View>
-                        ) : (
-                            <Text color='onPrimary' type='smallBold'>
-                                Convert currency
-                            </Text>
-                        )}
-                    </Pressable>
+                    />
                 </KeyboardAvoidingView>
 
                 <StatisticsCard result={conversionResult} calculationCount={calculationCount} />
@@ -226,29 +204,5 @@ const styles = StyleSheet.create({
     },
     inputDisabled: {
         opacity: 0.5,
-    },
-    convertButton: {
-        borderRadius: Spacing.two,
-        backgroundColor: Colors.primary,
-        paddingVertical: Spacing.three,
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: Colors.dark,
-        shadowOpacity: 0.18,
-        shadowRadius: 8,
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        elevation: 4,
-    },
-    convertButtonDisabled: {
-        opacity: 0.7,
-    },
-    buttonContent: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: Spacing.two,
     },
 });
