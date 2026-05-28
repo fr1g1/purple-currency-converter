@@ -209,6 +209,8 @@ export default function HomeScreen() {
                         )}
                     </Pressable>
                 </KeyboardAvoidingView>
+
+                <StatisticsCard result={conversionResult} calculationCount={calculationCount} />
             </SafeAreaView>
         </View>
     );
