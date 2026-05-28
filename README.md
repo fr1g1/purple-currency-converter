@@ -37,7 +37,7 @@ npx expo start
 
 ## EAS Preview
 
-**Link:** https://expo.dev/accounts/frigi/projects/purple-currency-converter/builds/ed27b387-6a0f-438d-8013-07d8b4184811
+**Link:** https://expo.dev/accounts/frigi/projects/purple-currency-converter/builds/74ef1655-1448-4259-b388-9ba492cfcb79
 
 **QR:**
 ![QR](./assets/qr.png)
